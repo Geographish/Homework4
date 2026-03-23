@@ -58,13 +58,6 @@ Thumbs.db
 *.temp
 *.log
 
-# 輸出檔案 (可選，如果想保留結果圖表和 JSON 可移除)
-*.png
-*.jpg
-*.jpeg
-*.json
-terrain_risk_audit.json
-terrain_risk_map.png
 
 # 資料檔案夾 (如果包含大型資料集)
 data/
