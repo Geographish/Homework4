@@ -20,13 +20,16 @@
 在繪製彩色地形圖疊加層時，原本嘗試使用 `matplotlib.colors.LogNorm` 來凸顯海拔差異。但因為花蓮為沿海縣市，DEM 中包含了高程為0的海平面，導致程式在計算色階最小值 (`vmin`) 時崩潰。
 解決方案：捨棄對數規範，改用標準的線性色階，並顯式宣告 `vmin=0`，讓海平面與低海拔地區呈現自然，也讓沿海地形的視覺呈現更符合真實情況。
 
+### 2. Zonal Stats 回傳 NaN（CRS 未對齊或像素未覆蓋）
+在運用 `rasterstats.zonal_stats` 計算避難所 500m 緩衝區的地形屬性時，發現部分資料回傳了 `NaN`。
+先確保所有向量交集與緩衝區建立前，皆強制投影至公尺單位的 EPSG:3826，確保疊合精準度。透過 `np.where` 將坡度矩陣中的無效區域同步挖空，並在呼叫 `zonal_stats` 時，嚴格宣告 `nodata=nodata_val` 與 `nodata=np.nan` 參數，強迫系統計算時忽略海面與邊界外的無效像素。
+
 ---
 
 ## 檔案結構 (Deliverables)
 * `ARIA_v2.ipynb`：包含完整分析流程、Captain's Log 註解的 Jupyter Notebook。
 * `terrain_risk_audit.json`：190 筆花蓮縣避難所的地形風險清單。
 * `terrain_risk_map_final.png`：地形複合風險視覺化地圖及Top 10 高風險避難所的坡度。
-* `.env`：存放分析門檻值。
 
 ## 環境與依賴套件 (Dependencies)
 ```bash
