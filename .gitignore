@@ -1,0 +1,70 @@
+# ARIA v2.0 - Git 忽略檔案
+
+# 大型地理資料檔案 (不應上傳到 GitHub)
+*.tif
+*.tiff
+dem_20m_hualien.tif
+
+# 環境變數檔案 (包含敏感設定)
+.env
+
+# Python 相關檔案
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Jupyter Notebook 檢查點
+.ipynb_checkpoints/
+
+# 虛擬環境
+venv/
+env/
+ENV/
+
+# IDE 設定檔
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 作業系統產生的檔案
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# 暫時檔案
+*.tmp
+*.temp
+*.log
+
+# 輸出檔案 (可選，如果想保留結果圖表和 JSON 可移除)
+*.png
+*.jpg
+*.jpeg
+*.json
+terrain_risk_audit.json
+terrain_risk_map.png
+
+# 資料檔案夾 (如果包含大型資料集)
+data/
